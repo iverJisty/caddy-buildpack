@@ -5,6 +5,9 @@ url_to_dependency_map:
 - match: go(\d+\.\d+(.*))
   name: go
   version: "$1"
+- match: php(\d-\d+\.\d\.\d+(.*))
+  name: php
+  version: "$1"
 
 dependencies:
 - name: go
@@ -13,6 +16,59 @@ dependencies:
   md5: 7eff0eab89b4bbdc4edea6beb672ed66
   cf_stacks:
     - cflinuxfs2
+- name: php
+  version: 7.0.17
+  uri: https://buildpacks.cloudfoundry.org/dependencies/php7/php7-7.0.17-linux-x64-b9482ca1.tgz
+  md5: b9482ca1542599ba1e2130d56d75c72e
+  cf_stacks:
+  - cflinuxfs2
+  modules:
+  - amqp
+  - apcu
+  - bz2
+  - cassandra
+  - curl
+  - dba
+  - exif
+  - fileinfo
+  - ftp
+  - gd
+  - geoip
+  - gettext
+  - gmp
+  - imagick
+  - imap
+  - ioncube
+  - ldap
+  - lua
+  - mailparse
+  - mbstring
+  - mcrypt
+  - mongodb
+  - msgpack
+  - mysqli
+  - opcache
+  - openssl
+  - pcntl
+  - pdo
+  - pdo_mysql
+  - pdo_pgsql
+  - pdo_sqlite
+  - pgsql
+  - phalcon
+  - phpiredis
+  - pspell
+  - rdkafka
+  - redis
+  - snmp
+  - soap
+  - sockets
+  - solr
+  - xdebug
+  - xsl
+  - yaf
+  - zip
+  - zlib
 
 exclude_files:
 - ".git/"
