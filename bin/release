@@ -3,6 +3,6 @@
 cat <<EOF
 ---
 default_process_types:
-    web: bin/caddy -port d\$PORT -log stdout
+    web: bin/caddy -port \$PORT -log stdout
 EOF
 
