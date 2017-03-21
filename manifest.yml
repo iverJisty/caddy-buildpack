@@ -1,6 +1,10 @@
 ---
 language: caddy
 
+default_versions:
+- name: php
+  version: 7.0.17
+
 url_to_dependency_map:
 - match: go(\d+\.\d+(.*))
   name: go
