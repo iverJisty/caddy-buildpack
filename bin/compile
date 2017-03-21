@@ -1,0 +1,45 @@
+#!/usr/bin/env ruby
+#
+#sync output
+$stdout.sync = true
+
+version = "0.9.5"
+caddy_filename = "caddy_linux_amd64"
+caddy_url = "https://github.com/mholt/caddy/releases/download/v#{version}/#{caddy_filename}.tar.gz"
+
+
+build_path = ARGV[0]
+cache_path = ARGV[1]
+cache_tar_file = File.join cache_path, "#{caddy_filename}.tar.gz"
+cache_caddy_dir = File.join cache_path, "caddy"
+cache_caddy_exec = File.join cache_path, "caddy", "#{caddy_filename}"
+build_caddy_exec = File.join build_path, "bin", "caddy"
+
+install_caddy
+
+private
+
+def install_caddy
+    puts "Installing caddy"
+
+    system "rm -rf #{cache_caddy_dir}"
+
+    if File.exist?(cache_tar_file)
+        puts "Using cache file"
+    else
+        puts "Get caddy from github"
+        File.open(cache_tar_file, 'w') do |f|
+            system "curl -sL -o #{f.path} #{caddy_url}"
+        end
+    end
+
+    puts "Extract the caddy"
+    Dir.mkdir cache_caddy_dir
+    system "tar xzf #{cache_file} -C #{cache_caddy_dir}"
+
+    puts "Put the caddy in build directory"
+    system "mkdir #{build_path}/bin"
+    File.rename cache_caddy_exec, build_caddy_exec
+
+end
+

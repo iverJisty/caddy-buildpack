@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+caddy_path = File.join ARGV[0], "Caddyfile"
+
+if File.exist?(caddy_path)
+    puts "Found Caddyfile"
+    exit 0
+else
+    exit 1
+end
+

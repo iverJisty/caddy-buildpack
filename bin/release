@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+cat <<EOF
+---
+default_process_types:
+    web: bin/caddy -port d\$PORT -log stdout
+EOF
+
